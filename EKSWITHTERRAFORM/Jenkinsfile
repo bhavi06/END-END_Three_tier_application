@@ -25,6 +25,7 @@ pipeline {
         stage('Init') {
             steps {
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                sh 'rm -rf EKSWITHTERRAFORM/eks/.terraform'    
                 sh 'terraform -chdir=EKSWITHTERRAFORM/eks/ init -reconfigure'
                 }
             }
